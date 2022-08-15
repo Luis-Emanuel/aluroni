@@ -4,13 +4,13 @@ import Buscador from "./Buscador"
 import { useState } from "react"
 import { serialize } from "v8";
 import Filtros from "./Filtros";
-import Ordenador from "./Ordenador";
+import Ordenador, { OpcoesOrdenador } from "./Ordenador";
 import Itens from "./itens";
 
 export default function Cardapio(){
     const [busca,setBusca]= useState("");
     const [filtro, setFiltro]= useState<number | null>(null);
-    const [ordenador, setOrdenador] = useState("");
+    const [ordenador, setOrdenador] = useState<OpcoesOrdenador>("");
     return(
         <main>
             <nav className={styles.menu}>
