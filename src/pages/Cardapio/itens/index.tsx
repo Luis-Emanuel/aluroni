@@ -2,6 +2,7 @@ import Item from './item';
 import styles from './Itens.module.scss';
 import cardapio from 'data/cardapio.json';
 import { useEffect, useState } from 'react';
+import { Cardapio } from 'types/Prato';
 
 interface Props{
     filtro: number | null
@@ -15,7 +16,7 @@ export default function Itens(props: Props){
   const{filtro, busca, ordenador} = props;
 
   const ordenarPropriedadeCrescente = (
-    lista: typeof cardapio,
+    lista: Cardapio,
     propriedade: 'size' | 'serving' | 'price')=>
   {
     return lista.sort((a, b) => (a[propriedade] > b[propriedade] ? 1 : -1));
@@ -29,7 +30,7 @@ export default function Itens(props: Props){
     if(filtro !== null) return filtro === id;
     return true;
   }
-  function ordenar(novaLista: typeof cardapio){
+  function ordenar(novaLista: Cardapio){
     switch(ordenador){
     case 'porcao':
       return ordenarPropriedadeCrescente(novaLista, 'size'); 
